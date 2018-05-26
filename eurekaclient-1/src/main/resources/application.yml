@@ -1,0 +1,12 @@
+#client-2是个示例样本,代码与本module相同.实际场景使用命令行参数java - jar --server.port= 运行时指定port,不必再写一个工程.
+server:
+  port: 6000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:5000/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+spring:
+  application:
+    name: eureka-provider
