@@ -1,5 +1,7 @@
 package com.example.configclient.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +21,12 @@ public class ConfigClientController {
 //    private String defaultZone;
     @Value("${foo}")
     private String foo;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ConfigClientController.class);
     @GetMapping("/testConfig")
     public String test(){
+        LOGGER.info("从配置中心读取到的配置:serverPort:{},rabbitPort:{},foo:{}",
+                serverPort,rabbitPort,foo);
         return "读取到配置中心,被覆盖的server.port端口配置："
                 +serverPort+",配置中心未覆盖的foo:"+foo
                 +",rabbitPort:"+rabbitPort;

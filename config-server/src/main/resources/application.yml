@@ -1,12 +1,14 @@
 eureka:
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+        defaultZone: http://localhost:5000/eureka/
 server:
   port: 4440
 spring:
   application:
-    name: microservice-config-server
+    name: config-server
   cloud:
     config:
       server:
