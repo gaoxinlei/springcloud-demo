@@ -21,7 +21,8 @@ public class ConfigClientController {
 //    private String defaultZone;
     @Value("${foo}")
     private String foo;
-
+    @Value("${spring.rabbitmq.textPort}")//测试本地application.properties能否使用.
+    private int rabbitTestPort;
     private static final Logger LOGGER = LoggerFactory.getLogger(ConfigClientController.class);
     @GetMapping("/testConfig")
     public String test(){
@@ -29,6 +30,7 @@ public class ConfigClientController {
                 serverPort,rabbitPort,foo);
         return "读取到配置中心,被覆盖的server.port端口配置："
                 +serverPort+",配置中心未覆盖的foo:"+foo
-                +",rabbitPort:"+rabbitPort;
+                +",rabbitPort:"+rabbitPort
+                +"rabbitTestPort:"+rabbitTestPort;
     }
 }
